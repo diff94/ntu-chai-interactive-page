@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一句話總驗收 </title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&amp;family=Noto+Sans+TC:wght@400;500;700&amp;family=Space+Grotesk:wght@400;500;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAEFD0; color: #2B2118; font-family: "Noto Sans TC", sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #B5502F; text-decoration: none; }
+  a:hover { color: #8F3C21; text-decoration: underline; }
+  ::selection { background: #E9A487; color: #2B2118; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes sheetIn { from { opacity: 0; transform: translateY(24px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+</style>
+</helmet>
+
+<div style="min-height:100vh; overflow-x:hidden;">
+
+  <div style="position:sticky; top:0; z-index:20; background:rgba(250,239,208,.86); backdrop-filter:blur(10px); border-bottom:1px solid rgba(43,33,24,.14);">
+    <div style="max-width:1120px; margin:0 auto; padding:12px 28px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:36px; height:36px; border-radius:10px; overflow:hidden; display:flex; box-shadow:inset 0 0 0 1.5px rgba(43,33,24,.25);">
+          <div style="width:50%; background:#C15F3C; position:relative;">
+            <div style="position:absolute; top:12px; left:8px; width:5px; height:5px; border-radius:50%; background:#FAEFD0;"></div>
+          </div>
+          <div style="width:50%; background:#2B2118; position:relative;">
+            <div style="position:absolute; top:12px; right:8px; width:5px; height:5px; border-radius:50%; background:#FAEFD0;"></div>
+          </div>
+        </div>
+        <div style="line-height:1.1;">
+          <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:14px; letter-spacing:.03em;">CHAI Future Lab</div>
+          <div style="font-size:11px; color:rgba(43,33,24,.55); letter-spacing:.08em;">NTU · College of Liberal Arts</div>
+        </div>
+      </div>
+      <div style="font-family:'Space Mono',monospace; font-size:11px; color:rgba(43,33,24,.55); letter-spacing:.1em;">09/15 人文 x AI</div>
+    </div>
+  </div>
+
+  <div style="max-width:1120px; margin:0 auto; padding:64px 28px 8px;">
+    <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.22em; color:#B5502F; text-transform:uppercase; margin-bottom:18px;">A prompt + An artifact &gt; New Ideas 🎫</div>
+    <h1 style="font-family:'Noto Serif TC',serif; font-weight:900; font-size:clamp(48px,8vw,92px); line-height:1.02; margin:0 0 14px; letter-spacing:.01em;">一句話收成祭</h1>
+    <p style="font-family:'Noto Serif TC',serif; font-size:clamp(17px,2.2vw,21px); line-height:1.7; color:rgba(43,33,24,.82); max-width:660px; margin:0 0 10px;">
+      09/15
+    </p>
+    <p style="font-size:16px; line-height:1.85; color:rgba(43,33,24,.72); max-width:660px; margin:0;">
+      今天最後一件事：請從下面選 <strong style="color: rgb(181, 80, 47);">一張卡</strong>，整段複製、貼到 Claude Cowork 對話框、按 Enter：得到你的互動網頁（artifact）:&nbsp;  <strong>A prompt + An artifact &gt; New Ideas </strong>
+    </p>
+  </div>
+
+  <div style="max-width:1120px; margin:0 auto; padding:34px 28px 8px;">
+    <div style="background:#FFF7E4; border:1.5px solid rgba(43,33,24,.16); border-radius:18px; padding:26px 30px; box-shadow:0 10px 30px rgba(43,33,24,.06);">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
+        <span style="font-size:20px;">⚡</span>
+        <h2 style="font-family:'Noto Serif TC',serif; font-weight:700; font-size:20px; margin:0;">省額度小撇步</h2>
+        <span style="font-size:13px; color:rgba(43,33,24,.5);"> 每個人額度有限，請酌量使用:&gt; </span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px;">
+        <div style="display:flex; gap:12px;">
+          <div style="flex:none; width:26px; height:26px; border-radius:50%; background:#C15F3C; color:#FAEFD0; font-family:'Space Mono',monospace; font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center;">1</div>
+          <div style="font-size:14.5px; line-height:1.65; color:rgba(43,33,24,.8);">貼卡片前，把模型選單切到 <strong>Sonnet</strong>：做網頁又快又好，經濟實惠。</div>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <div style="flex:none; width:26px; height:26px; border-radius:50%; background:#C15F3C; color:#FAEFD0; font-family:'Space Mono',monospace; font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center;">2</div>
+          <div style="font-size:14.5px; line-height:1.65; color:rgba(43,33,24,.8);"><strong>一人一張卡</strong>，做完想改，把要改的地方集中成<strong>一句話</strong>一次說完（每次來回都耗費額度）。</div>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <div style="flex:none; width:26px; height:26px; border-radius:50%; background:#C15F3C; color:#FAEFD0; font-family:'Space Mono',monospace; font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center;">3</div>
+          <div style="font-size:14.5px; line-height:1.65; color:rgba(43,33,24,.8);">卡片都<strong>自帶示例資料、預設不上網搜尋</strong>（搜尋最燒額度），別忘記 Magic words: Make this a live artifact.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1120px; margin:0 auto; padding:52px 28px 20px;">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:22px;">
+      <h2 style="font-family:'Noto Serif TC',serif; font-weight:900; font-size:clamp(28px,4vw,40px); margin:0;">選一張卡 <span style="font-size:.5em; font-weight:500; color:rgba(43,33,24,.5); font-family:'Space Mono',monospace; letter-spacing:.1em;">/ pick one</span></h2>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:9px; margin-bottom:30px;">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="7">
+        <button onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.name }}</button>
+      </sc-for>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:20px;">
+      <sc-for list="{{ cards }}" as="c" hint-placeholder-count="8">
+        <button onClick="{{ c.onOpen }}" style="text-align:left; background:#FFF7E4; border:1.5px solid rgba(43,33,24,.14); border-radius:18px; padding:24px 24px 22px; cursor:pointer; font-family:inherit; color:inherit; display:flex; flex-direction:column; gap:14px; transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease; box-shadow:0 3px 0 rgba(43,33,24,.05);" style-hover="text-align:left; background:#FFFCF2; border:1.5px solid rgba(43,33,24,.14); border-color:#C15F3C; border-radius:18px; padding:24px 24px 22px; cursor:pointer; font-family:inherit; color:inherit; display:flex; flex-direction:column; gap:14px; transform:translateY(-3px); box-shadow:0 12px 26px rgba(43,33,24,.12);">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:22px; width:42px; height:42px; border-radius:12px; background:#2B2118; color:#FAEFD0; display:flex; align-items:center; justify-content:center;">{{ c.letter }}</span>
+              <span style="font-size:12px; font-weight:500; color:rgba(43,33,24,.6); background:rgba(43,33,24,.07); padding:4px 10px; border-radius:999px;">{{ c.categoryLabel }}</span>
+            </div>
+            <span style="font-size:18px;">{{ c.star }}</span>
+          </div>
+          <h3 style="font-family:'Noto Serif TC',serif; font-weight:700; font-size:20px; margin:0; line-height:1.35;">{{ c.title }}</h3>
+          <p style="font-size:14px; line-height:1.65; color:rgba(43,33,24,.7); margin:0; flex:1;">{{ c.desc }}</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding-top:4px; border-top:1px dashed rgba(43,33,24,.16);">
+            <span style="font-family:'Space Mono',monospace; font-size:11px; color:rgba(43,33,24,.55);">{{ c.time }}</span>
+            <span style="color:rgba(43,33,24,.3);">·</span>
+            <span style="font-size:11px; padding:2px 8px; border-radius:999px; background:rgba(43,33,24,.06); color:rgba(43,33,24,.65);">{{ c.model }}</span>
+            <span style="font-size:11px; padding:2px 8px; border-radius:999px; {{ c.creditStyle }}">額度 {{ c.credit }}</span>
+          </div>
+          <div style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.06em; color:#B5502F; margin-top:2px;">看 prompt →</div>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="max-width:1120px; margin:0 auto; padding:44px 28px 20px;">
+    <h2 style="font-family:'Noto Serif TC',serif; font-weight:900; font-size:clamp(26px,3.6vw,36px); margin:0 0 6px;">收成之後</h2>
+    <p style="font-size:15px; color:rgba(43,33,24,.65); margin:0 0 22px;">做完想再動它？記得——集中一次說完。</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px;">
+      <sc-for list="{{ tips }}" as="t" hint-placeholder-count="6">
+        <div style="background:#FFF7E4; border:1.5px solid rgba(43,33,24,.13); border-radius:14px; padding:18px 20px;">
+          <div style="font-weight:700; font-size:14.5px; margin-bottom:8px; color:#2B2118;">{{ t.want }}</div>
+          <div style="font-size:14px; line-height:1.6; color:rgba(43,33,24,.72);">{{ t.say }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="max-width:1120px; margin:0 auto; padding:44px 28px 90px;">
+    <div style="background:#2B2118; color:#FAEFD0; border-radius:22px; padding:44px 40px; position:relative; overflow:hidden;">
+      <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.22em; color:#E9A487; text-transform:uppercase; margin-bottom:14px;">Take it back to your classroom</div>
+      <h2 style="font-family:'Noto Serif TC',serif; font-weight:900; font-size:clamp(28px,4vw,40px); margin:0 0 16px;">帶回你的課堂</h2>
+      <p style="font-size:16px; line-height:1.8; color:rgba(250,239,208,.85); max-width:620px; margin:0 0 8px;">恭喜泥！成功做出專屬自己的互動頁面！把示例資料換成自己的真實語料、學生作業或測驗題，它就是你的研究與教學工具。<a href="https://ntu-chai.github.io/#vision" target="_blank" style="color: rgb(233, 164, 135); text-decoration: underline;">CHAI — Co-Intelligence Humanities AI Future Lab</a></p>
+      <p style="font-family:'Space Mono',monospace; font-size:12px; color:rgba(250,239,208,.5); margin:22px 0 0; letter-spacing:.05em;">CHAI Future Lab @ NTU · 2026/09/15 · 主講：王伯雅 Amber</p>
+    </div>
+  </div>
+
+  <sc-if value="{{ hasSelected }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeModal }}" style="position:fixed; inset:0; z-index:60; background:rgba(30,22,15,.55); backdrop-filter:blur(4px); display:flex; align-items:flex-start; justify-content:center; padding:5vh 20px 40px; overflow-y:auto; animation:overlayIn .18s ease;">
+      <div onClick="{{ stop }}" style="width:100%; max-width:720px; background:#FAEFD0; border-radius:22px; box-shadow:0 30px 80px rgba(0,0,0,.4); animation:sheetIn .24s cubic-bezier(.2,.8,.2,1); overflow:hidden;">
+        <div style="padding:28px 32px 22px; border-bottom:1px solid rgba(43,33,24,.14); background:#FFF7E4;">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+            <div style="display:flex; align-items:center; gap:14px;">
+              <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:24px; width:48px; height:48px; border-radius:13px; background:#2B2118; color:#FAEFD0; display:flex; align-items:center; justify-content:center;">{{ selected.letter }}</span>
+              <div>
+                <div style="font-size:12px; color:rgba(43,33,24,.55); margin-bottom:3px;">{{ selected.categoryLabel }}</div>
+                <h3 style="font-family:'Noto Serif TC',serif; font-weight:700; font-size:22px; margin:0;">{{ selected.title }}</h3>
+              </div>
+            </div>
+            <button onClick="{{ closeModal }}" style="flex:none; width:38px; height:38px; border-radius:50%; border:1.5px solid rgba(43,33,24,.2); background:transparent; color:#2B2118; font-size:20px; cursor:pointer; line-height:1;">×</button>
+          </div>
+          <p style="font-size:14.5px; line-height:1.65; color:rgba(43,33,24,.72); margin:16px 0 0;">{{ selected.desc }}</p>
+        </div>
+
+        <div style="padding:22px 32px 8px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+            <div style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.14em; color:rgba(43,33,24,.55); text-transform:uppercase;">The prompt · 整段複製</div>
+            <div style="display:flex; gap:6px;">
+              <span style="font-size:11px; padding:3px 9px; border-radius:999px; background:rgba(43,33,24,.06); color:rgba(43,33,24,.65);">{{ selected.model }}</span>
+              <span style="font-size:11px; padding:3px 9px; border-radius:999px; {{ selected.creditStyle }}">額度 {{ selected.credit }}</span>
+            </div>
+          </div>
+          <pre style="margin:0; background:#2B2118; color:#F3E6C9; border-radius:14px; padding:22px 22px; font-family:'Space Mono','Noto Sans TC',monospace; font-size:13.5px; line-height:1.72; white-space:pre-wrap; word-break:break-word; max-height:44vh; overflow-y:auto;">{{ selected.prompt }}</pre>
+        </div>
+
+        <div style="padding:16px 32px 30px; display:flex; gap:12px; align-items:center;">
+          <button onClick="{{ copyPrompt }}" style="{{ copyBtnStyle }}">{{ copyLabel }}</button>
+          <div style="font-size:12.5px; line-height:1.5; color:rgba(43,33,24,.6);">貼到桌機 Claude Cowork 對話框，按 Enter。<br>記得先把模型切到 <strong>Sonnet</strong>。</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { filter: "全部", selected: null, copied: false };
+
+  data = [
+    { letter: "A", title: "PAIRR 回饋三方對照器", category: "寫作教學", categoryLabel: "寫作教學 · PAIRR", time: "約 3–4 分", model: "Sonnet", credit: "中", star: "⭐",
+      desc: "同儕回饋、AI 回饋、學生反思三方對照，看見學生把哪一則建議「採納／轉化／擱置」。",
+      prompt: `（不要上網搜尋，用下面的示例資料直接完成，不要先問我問題）
+
+我在研究 PAIRR 模式（Peer and AI Review + Reflection）在研究生英文學術寫作課的運作。請把下面這組資料做成一個互動網頁（artifact）。
+
+【學生初稿片段】
+"This study want to explore how graduate students use AI tools in their writing. Previous research has shown many things about this topic. The result is important for teachers."
+
+【同儕回饋 Peer】
+1. 第一句主詞動詞不一致。
+2. "Previous research has shown many things" 太籠統，讀者不知道你指哪些研究。
+3. 沒有說明為什麼重要、對誰重要。
+
+【AI 回饋 AI Review】
+1. 語法：want → wants。
+2. 建議把第二句改寫為具體的研究缺口陳述（gap statement）。
+3. 建議在第三句加上讀者對象與應用場域。
+4. 直接提供一段改寫示範。
+
+【學生反思 Reflection】
+「同儕說太籠統，AI 也說要具體，但 AI 直接給我改寫句，我照抄會不像我寫的。我採納了 gap 的建議，自己重寫；文法錯誤我接受；讀者對象那條我先擱著，因為還沒想清楚要寫給誰看。」
+
+網頁請做出：
+1. 四欄對照檢視器（初稿／同儕／AI／反思）；點任一則回饋，亮起它對應到初稿的哪一句。
+2. 每則回饋標上「回饋焦點」標籤：表層語言、內容發展、讀者意識、修辭結構。
+3. 學生的處置以三色標示：採納、轉化、擱置；底部一張分布長條圖。
+4. 右側「AI 素養觀察」面板：從這份反思看得出的三個 AI 素養行為（如：辨識 AI 建議的邊界、維持作者聲音）。
+5. 最下方「換上我的資料」說明：告訴我要替換哪四段文字、以及要再跟你說哪一句話。
+
+繁體中文介面，英文原文保留不譯。` },
+
+    { letter: "B", title: "AI 口說測驗效度檢核台", category: "口語與測驗", categoryLabel: "語言測驗 · 效度", time: "約 3–4 分", model: "Sonnet", credit: "中", star: "⭐",
+      desc: "用 AI 設計並施測外語口說測驗，效度風險在哪裡？推論鏈檢核表＋風險熱區圖。",
+      prompt: `（不要上網搜尋，用你既有的知識完成，不確定處標「待查證」，不要先問我問題）
+
+我要評估「用 AI 設計並施測外語口說測驗」的可行性，核心關切是效度。請產出一個互動網頁（artifact）效度檢核台：
+
+1. 上方：一份 AI 生成的示範口說任務（英語，B1–B2，情境獨白一題＋追問一題）與四向度四級評分規準（發音清晰度、流暢度、詞彙語法、任務達成）。
+2. 中間：效度論證檢核表，依推論鏈分列——評分 scoring、類推 generalization、外推 extrapolation、決策 implication。每一環列出：這一環的假設、AI 施測時的風險、可以蒐集哪些佐證來支持或推翻它。
+   風險至少涵蓋：語音辨識對口音與非母語語音的誤判、AI 評分與人類評分的一致性、任務真實性、考生面對機器與面對真人時的表現差異、公平性與可及性、資料隱私與留存。
+3. 每個風險可點開，顯示「嚴重度 × 可控性」定位，右側自動排出一張風險熱區圖。
+4. 下方：一頁試辦研究設計草案（研究問題、對象、資料來源、分析方法），佐證類型做成可勾選清單，勾選後即時顯示「這份設計目前撐得起哪幾環推論」。
+
+繁體中文介面，測驗題目與評分規準用英文。` },
+
+    { letter: "C", title: "口說練習 Chatbot 腳本設計器", category: "口語與測驗", categoryLabel: "外語教學 · 口說", time: "約 3–4 分", model: "Sonnet", credit: "中", star: "",
+      desc: "把 chatbot 口說練習寫成有鷹架、有糾錯策略的劇本，附一鍵複製的 system prompt。",
+      prompt: `（不要上網搜尋，直接完成，不要先問我問題）
+
+我要用 chatbot 幫學生練英語口說。請幫我做一個互動網頁（artifact）：口說練習劇本設計器。
+
+先產出一份完整示範劇本——情境「到系辦跟外籍教授約 office hour 並簡述研究構想」，程度 B1，共 6 個回合。每回合包含：chatbot 的話、期待學生產出的語言功能（寒暄、說明來意、澄清、確認時間、致謝）、三層鷹架（給句型 → 只給關鍵詞 → 完全放手），以及糾錯策略（recast 重述、clarification request 澄清請求、explicit correction 明示糾正）分別適合在什麼情況使用。
+
+網頁需要：
+1. 對話樹檢視器：點每個回合展開上述細節；用滑桿切換鷹架層級，畫面上的提示隨之增減。
+2. 教師設定面板：情境、程度（A2／B1／B2）、糾錯策略偏好、每回合長度；改設定時，即時顯示一句「這樣改會影響什麼」的提醒。
+3. 「複製給 chatbot 的系統提示」按鈕：把目前設定組成一段可直接貼給聊天機器人的英文 system prompt。
+4. 底部：練習前、練習中、練習後各一個課堂活動，加一張學生自評表（我做到了什麼／我卡在哪裡）。
+
+繁體中文介面，英文對話與 system prompt 用英文。` },
+
+    { letter: "D", title: "AI 協作寫作能力評量表", category: "寫作教學", categoryLabel: "寫作評量 · AI 素養", time: "約 2–3 分", model: "Sonnet", credit: "低", star: "",
+      desc: "生成式 AI 之後，學術寫作能力怎麼評？五面向構念圖＋四級規準＋一次示範評分。",
+      prompt: `（不要上網搜尋，直接完成，不要先問我問題）
+
+生成式 AI 之後，「學術寫作能力」該怎麼評？請幫我把「AI 中介的學術寫作能力」（AI-mediated academic writing ability）做成一個可操作的評量架構，產出互動網頁（artifact）：
+
+1. 構念圖：拆成 5 個面向——任務界定與提問、來源判讀與查證、文本整合與改寫、修改判斷（決定接受或拒絕 AI 建議的理由）、揭露與學術誠信。每個面向點開顯示：定義、可觀察的行為、常見誤判。
+2. 四級評分規準表（初階／發展中／熟練／自主），每一格寫成教師可以直接勾選的描述句。
+3. 示範評分：用下面這段學生自述跑一次，五個面向各給級別並附一句理由。
+
+【學生自述】
+「我先請 AI 給我五個題目方向，選了一個。文獻是我自己在資料庫找的，AI 幫我整理成表格，我核對過三篇，有一篇它寫錯年份。討論段我先自己寫，再請 AI 指出邏輯跳躍的地方，它指出兩處，我改了一處，另一處我認為它誤解我的論點。我在方法章節註明使用 AI 協助整理文獻。」
+
+4. 底部「作業設計對照表」：這五個面向分別可以用什麼作業形式蒐集證據（提問紀錄、查證註記、修改理由書、AI 使用聲明等）。
+
+繁體中文。` },
+
+    { letter: "E", title: "研究者聲音跨學科比較器", category: "寫作教學", categoryLabel: "學術寫作 · 後設論述", time: "約 2–3 分", model: "Sonnet", credit: "低", star: "",
+      desc: "模糊限制語、強調語、自我提及——三個學科的摘要並排標記，疊出聲音側寫。",
+      prompt: `（不要上網搜尋，用下面示例文本完成，不要先問我問題）
+
+我研究生成式 AI 時代的「研究者聲音」（researcher voice）跨學科差異。請用後設論述（metadiscourse）標記下面三段摘要，並做成互動網頁（artifact）。
+
+標記類別——立場標記：模糊限制語 hedges、強調語 boosters、態度標記 attitude markers、自我提及 self-mention；互動標記：讀者提及、提問、指示語。
+
+【文本 1 · 語言學】
+"This study suggests that L2 learners may rely on prosodic cues more heavily than previously assumed. We tested 48 participants. The results clearly indicate a robust effect, although the sample size limits generalizability."
+
+【文本 2 · 文學研究】
+"I argue that the novel's silences are not gaps but arguments. Read this way, the text becomes strikingly modern. Readers familiar with the period will recognize the gesture immediately."
+
+【文本 3 · 藝術史】
+"The attribution remains contested. Evidence from pigment analysis appears to support a later date, though the documentary record is, as ever, incomplete."
+
+網頁需要：
+1. 三欄並排文本，標記處以顏色底標示；滑過顯示類別與這個詞在此處的功能說明。
+2. 三段的「聲音側寫」雷達圖疊在同一張圖上比較。
+3. 「這代表什麼」解讀卡三張：三個學科在自我提及與模糊限制語上的差異，各一句話。
+4. 底部「換上我的文本」說明：我要替換哪三段、以及要再跟你說哪一句話。
+
+繁體中文介面，英文原文不譯。` },
+
+    { letter: "F", title: "學習者偏誤標記器", category: "語言與華語", categoryLabel: "華語教學 · 偏誤分析", time: "約 2–3 分", model: "Sonnet", credit: "低", star: "",
+      desc: "八句學習者語料，標偏誤類型與可能來源，交叉統計後排出「先教哪三個語法點」。",
+      prompt: `（不要上網搜尋，用下面示例語料完成，不要先問我問題）
+
+我在做華語學習者的偏誤分析。請把下面 8 句示例語料做成互動網頁（artifact）標記器。
+
+【語料（學習者母語／句子）】
+1.（英語）我昨天去圖書館了書。
+2.（日語）這個問題對我來說很難的。
+3.（韓語）我很喜歡吃臺灣菜，因為很好吃的原因。
+4.（英語）他把作業沒有交。
+5.（越南語）我學中文三年了在臺灣。
+6.（日語）雖然下雨了，但是我還是去了，可是有點累。
+7.（英語）我打算明天要去看醫生了。
+8.（韓語）這本書比那本書更很有意思。
+
+每句請標記：偏誤類型（遺漏／誤加／誤代／錯序）、涉及的語法點、可能來源（母語負遷移／目標語規則過度泛化／教學或教材誘發），並給修正句與一句「課堂上可以怎麼講」的教學提示。判斷不確定的標「待商榷」。
+
+網頁需要：
+1. 語料檢視器：左欄句子（偏誤處以底線標出），右欄標記卡；可依偏誤類型或母語背景篩選。
+2. 偏誤類型 × 母語背景的交叉統計圖。
+3. 「教學重點排序」清單：如果只有一堂課，先教哪三個語法點，各附一句理由。
+
+繁體中文。` },
+
+    { letter: "G", title: "研究編碼簿工作台", category: "語言與華語", categoryLabel: "研究方法 · 質性編碼", time: "約 3–4 分", model: "Sonnet", credit: "中", star: "",
+      desc: "從研究問題長出一份有納入／排除準則的編碼簿，附逐輪編碼與編碼者一致性工作表。",
+      prompt: `（不要上網搜尋，直接完成，不要先問我問題）
+
+請幫我把「編碼簿（codebook）」做成一個可用的互動網頁（artifact）工作台。
+
+示範研究問題：研究生在寫作課使用 AI 時，向 AI 求助的類型與追問深度。示範資料：
+
+輪次 1 學生：Can you help me make this paragraph more academic?
+輪次 2 AI：（改寫並說明三處調整）
+輪次 3 學生：Why did you change "a lot of" to "considerable"?
+輪次 4 AI：（解釋語域差異，給對比例句）
+輪次 5 學生：But my advisor said not to use too many nominalizations. Is this too much?
+輪次 6 AI：（比較兩個版本，指出取捨）
+
+請產出：
+1. 一份編碼簿：4 個類目（求助類型、追問深度、AI 回應策略、學生是否展現判斷），每個類目有代碼、定義、納入準則、排除準則、正例與反例各一。
+2. 逐輪編碼結果，每輪附一句編碼理由。
+3. 互動網頁：左欄對話、右欄編碼標籤（可依類目篩選）、底部類目分布圖。
+4. 一張「編碼者一致性工作表」：兩位編碼者各自填答欄、不一致處的協商紀錄欄，以及 Cohen's kappa 要填哪些數字的說明（不必幫我算）。
+5. 「換上我的資料」說明：要替換哪些部分、研究問題改了之後要再跟你說什麼。
+
+繁體中文介面，英文對話保留原文。` },
+
+    { letter: "H", title: "跨語際文本對讀器", category: "文學", categoryLabel: "台文／日文 · 語言層次", time: "約 2–3 分", model: "Sonnet", credit: "低", star: "",
+      desc: "一段自撰的 1930 年代台灣白話文示範文本，拆出日語借詞、台語漢字與和製漢語的層次。",
+      prompt: `（不要上網搜尋，使用下面的示例文本，不確定處標「待查證」，不要先問我問題）
+
+我做的是跨語際的文本閱讀（台灣文學與日本文學之間的語言層次）。請用下面這段「示範用自撰文本」（模擬 1930 年代台灣白話文的語感，非真實作品）做一個互動網頁（artifact）對讀器：
+
+【示範文本】
+「街尾的寫真館開了三年，招牌用日語寫，門口的老人卻用台語招呼客人。少年提著カバン走過，心裡想的是明天的作文題目——『我的家庭』。用什麼話寫，先生沒有說。」
+
+網頁需要：
+1. 三欄對讀：原文／現代中文轉寫／語言層次注解。
+2. 點選文中詞彙，顯示它的語言歸屬（日語借詞、台語漢字、近代白話文、和製漢語）與一句「這個選擇為什麼有意義」的解讀。
+3. 一張「語言層次分布」小圖：這段文字裡各層次的比例。
+4. 右側「提問卡」三張：這段文字可以發展成什麼研究問題（語言選擇與身分認同、教育場域的語言政策、書寫媒介與讀者）。
+5. 最下方明確標示「示範文本為自撰，非史料」，並說明我要換上真實文本時該提供什麼（出處、年代、版本）。
+
+繁體中文。` },
+
+    { letter: "I", title: "中國陶瓷 東西文本對讀器", category: "藝術史", categoryLabel: "藝術史 · 物質文化", time: "約 3–4 分", model: "Sonnet", credit: "中", star: "",
+      desc: "同一批青花與白瓷，在中國陶錄茶書與歐洲遊記書信裡被寫成兩種東西。對讀＋查證清單。",
+      prompt: `（不要上網搜尋，用你既有的知識完成；所有文本一律用你自己的話摘述，不要偽造逐字引文；出處與年代不確定一律標「待查證」；不要先問我問題）
+
+我想比較中國陶瓷在東方與西方古典文獻裡「被寫成什麼」。請以青花瓷與白瓷為主，做一個互動網頁（artifact）對讀器。
+
+請從你既有的知識中選出 6 條文本線索，東西方各 3 條，涵蓋以下類型：
+· 東方：製作與工序記述（陶錄、工藝類典籍一類）、文人品物與茶書、詩詞中的器物描寫
+· 西方：中世紀至近代的旅行見聞（如馬可波羅一類）、17–18 世紀歐洲的書信與收藏／清單文書、chinoiserie 時期的詩文與諷刺文學
+
+每條請給：出處、作者與年代（不確定標「待查證」）、內容摘述（你自己的話，不要逐字引文）、關注面向（材質與工序／釉色與質感／稀有與價格／異國情調／社會身分／禮儀與用途），以及一句「這條文本把陶瓷當成什麼」。
+
+網頁需要：
+1. 左右對讀版面：左欄東方文本、右欄西方文本；中間一條「共通關鍵詞」帶（如：白、透光、聲、貴、異國、仿），點關鍵詞時兩側相關文本同時亮起。
+2. 一張「關注面向」對照矩陣（東方 vs 西方 × 六個面向），格子深淺代表著墨程度，點格子看依據。
+3. 三張「差異解讀卡」：東西方在工序知識、稀有性與價格、身分象徵上的落差，各一句話。
+4. 一張「查證清單」：我接下來要核對的出處、版本與譯本，逐條列出，並標明哪幾條你的把握最低。
+5. 底部固定說明：本頁內容為 AI 依既有知識重構、非逐字引文，使用前須查證。
+
+繁體中文，西文書名與人名附原文。` },
+
+    { letter: "J", title: "我的研究領域地圖", category: "通用", categoryLabel: "通用 · 任何領域", time: "約 3–4 分", model: "Sonnet", credit: "中", star: "",
+      desc: "把〔　〕換成你的領域，生成可點擊的概念地圖，附一個「與 AI 方法的交集」面板。",
+      prompt: `（不要上網搜尋，用你既有的知識完成，不確定的文獻資訊標「待查證」，不要先問我問題）
+
+我的研究領域是〔例：第二語言寫作中的回饋研究〕。請整理這個領域的知識地圖：3–4 個核心概念、每個概念下的代表學者與 1–2 篇關鍵文獻、目前的開放問題。
+
+產出一個互動網頁（artifact）：中央是領域名稱的概念地圖，點每個概念展開學者、文獻與開放問題；右上角加一個「與 AI 方法的可能交集」小面板，列出三個這個領域現在可以用 AI 重新問一次的老問題。文獻資訊一律標註可信度（確定／待查證）。繁體中文。` },
+
+    { letter: "K", title: "一頁研究名片", category: "通用", categoryLabel: "通用 · 最省額度", time: "約 1–2 分", model: "Haiku／Sonnet", credit: "最低", star: "",
+      desc: "填三個空格就好，做完可直接投影自我介紹。",
+      prompt: `（不要上網搜尋，直接完成，不要先問我問題）
+
+幫我做一頁學術名片網頁（artifact）。姓名：〔　〕；單位與職稱：〔　〕；研究興趣三項：〔　〕。
+
+版面：米黃底（#FAEFD0）、大字姓名、研究興趣做成三張可翻轉的卡片（正面關鍵詞、背面一句話說明）、底部一句我的研究信念（依研究興趣擬三句讓我挑）。繁體中文，學術但溫暖。` },
+
+    { letter: "L", title: "今日工作坊翻牌回顧", category: "彩蛋", categoryLabel: "彩蛋 (?)", time: "約 1–2 分", model: "Haiku／Sonnet", credit: "最低", star: "🥚",
+      desc: "把今天學的做成翻牌小遊戲，回家考自己（或考同事）。",
+      prompt: `（不要上網搜尋，直接完成，不要先問我問題）
+
+把今天工作坊的核心概念做成翻牌記憶卡遊戲網頁（artifact）。概念：Cowork（會動手的數位同事）、Project（雲端記憶抽屜）、Artifact（活的儀表板）、Scheduled（定時代理）、Dispatch（手機派工給桌機）、Skill（教方法的文字檔）、Connector（伸向外部資料的手）、Claude Design（共同編輯的成品工作室）。
+
+玩法：正面顯示名詞、點擊翻面顯示白話解釋；全部翻完出現「你已出師 🎓」動畫。米黃底、繁體中文、輕鬆幽默。` },
+  ];
+
+  tips = [
+    { want: "改樣式＋加功能", say: "「三件事一次改：配色換◯◯、加篩選按鈕、標題改成◯◯」" },
+    { want: "沒變成網頁 / 只給我文字", say: "「Make this a live artifact.」" },
+    { want: "畫面空白或跑版", say: "「artifact 沒有正確顯示，請檢查並修正」" },
+    { want: "換上我的真實資料", say: "「把示例資料換成我貼上的這一份，架構與版面都不要動」" },
+    { want: "留住它", say: "artifact 會留在側欄；也可請它「另存成 HTML 檔到我的資料夾」" },
+    { want: "變漂亮拿去簡報／投稿", say: "用 Claude Design（claude.ai/design）：貼上內容，一句話變簡報" },
+  ];
+
+  creditStyle(credit) {
+    if (credit === "中") return "background:#F3D6A0; color:#7A5510;";
+    return "background:#CDE7C6; color:#2F6B32;";
+  }
+
+  chipStyle(active) {
+    const base = "font-family:inherit; font-size:13.5px; font-weight:500; padding:8px 16px; border-radius:999px; cursor:pointer; transition:all .14s ease;";
+    return active
+      ? base + " background:#2B2118; color:#FAEFD0; border:1.5px solid #2B2118;"
+      : base + " background:transparent; color:rgba(43,33,24,.7); border:1.5px solid rgba(43,33,24,.2);";
+  }
+
+  doCopy(card) {
+    if (!card) return;
+    const done = () => { this.setState({ copied: true }); clearTimeout(this._t); this._t = setTimeout(() => this.setState({ copied: false }), 1900); };
+    try {
+      navigator.clipboard.writeText(card.prompt).then(done, () => this.fallbackCopy(card.prompt, done));
+    } catch (e) { this.fallbackCopy(card.prompt, done); }
+  }
+  fallbackCopy(text, done) {
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  renderVals() {
+    const filters = ["全部", "寫作教學", "口語與測驗", "語言與華語", "文學", "藝術史", "通用", "彩蛋"];
+    const active = this.state.filter;
+    const cards = this.data
+      .filter(c => active === "全部" || c.category === active)
+      .map(c => ({
+        ...c,
+        creditStyle: this.creditStyle(c.credit),
+        onOpen: () => this.setState({ selected: c.letter, copied: false }),
+      }));
+    const selData = this.data.find(c => c.letter === this.state.selected) || null;
+    const selected = selData ? { ...selData, creditStyle: this.creditStyle(selData.credit) } : null;
+    const copyBtnStyle = "flex:none; font-family:inherit; font-size:15px; font-weight:700; padding:14px 26px; border-radius:12px; cursor:pointer; border:none; background:" +
+      (this.state.copied ? "#2F6B32" : "#C15F3C") + "; color:#FAEFD0; transition:background .18s ease; box-shadow:0 4px 0 " +
+      (this.state.copied ? "#245026" : "#8F3C21") + ";";
+    return {
+      filters: filters.map(f => ({ name: f, style: this.chipStyle(f === active), onClick: () => this.setState({ filter: f }) })),
+      cards,
+      tips: this.tips,
+      selected,
+      hasSelected: !!selected,
+      closeModal: () => this.setState({ selected: null, copied: false }),
+      copyPrompt: () => this.doCopy(selData),
+      copyLabel: this.state.copied ? "已複製 ✓ 快去貼上" : "複製整段 prompt",
+      copyBtnStyle,
+      stop: (e) => e.stopPropagation(),
+    };
+  }
+}
+</script>
+</body>
+</html>
