@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>圖文呼應對讀祭</title>
+<meta name="description" content="CHAI Future Lab · 繪畫史 × 小說・佛道文本 的圖文呼應對讀。選一張卡，整段複製，貼到 Claude Cowork 練習。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAEFD0; color: #2B2118; font-family: "Noto Sans TC", sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: #B5502F; text-decoration: none; }
+  a:hover { color: #8F3C21; text-decoration: underline; }
+  ::selection { background: #E9A487; color: #2B2118; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes sheetIn { from { opacity: 0; transform: translateY(24px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  @media (prefers-reduced-motion: reduce){ *{ animation: none !important; transition: none !important; } }
+
+  .wrap { max-width: 1120px; margin: 0 auto; }
+
+  /* header */
+  .mast { position: sticky; top: 0; z-index: 20; background: rgba(250,239,208,.86); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(43,33,24,.14); }
+  .mast .row { padding: 12px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .logo { width: 36px; height: 36px; border-radius: 10px; overflow: hidden; display: flex; box-shadow: inset 0 0 0 1.5px rgba(43,33,24,.25); flex: none; }
+  .logo .half { width: 50%; position: relative; }
+  .logo .l { background: #C15F3C; }
+  .logo .r { background: #2B2118; }
+  .logo .dot { position: absolute; top: 12px; width: 5px; height: 5px; border-radius: 50%; background: #FAEFD0; }
+  .logo .l .dot { left: 8px; }
+  .logo .r .dot { right: 8px; }
+  .brand .name { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 14px; letter-spacing: .03em; }
+  .brand .sub { font-size: 11px; color: rgba(43,33,24,.55); letter-spacing: .08em; }
+  .mast .tag { font-family: "Space Mono", monospace; font-size: 11px; color: rgba(43,33,24,.55); letter-spacing: .1em; }
+
+  /* hero */
+  .hero { padding: 64px 28px 8px; }
+  .kicker { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .22em; color: #B5502F; text-transform: uppercase; margin-bottom: 18px; }
+  h1.title { font-family: "Noto Serif TC", serif; font-weight: 900; font-size: clamp(48px, 8vw, 92px); line-height: 1.02; margin: 0 0 14px; letter-spacing: .01em; }
+  .hero .lead { font-family: "Noto Serif TC", serif; font-size: clamp(17px, 2.2vw, 21px); line-height: 1.7; color: rgba(43,33,24,.82); max-width: 680px; margin: 0 0 10px; }
+  .hero .intro { font-size: 16px; line-height: 1.85; color: rgba(43,33,24,.72); max-width: 680px; margin: 0; }
+  .hero .intro strong.hl { color: #B5502F; }
+
+  /* tips */
+  .sec { padding: 34px 28px 8px; }
+  .tips { background: #FFF7E4; border: 1.5px solid rgba(43,33,24,.16); border-radius: 18px; padding: 26px 30px; box-shadow: 0 10px 30px rgba(43,33,24,.06); }
+  .tips .hd { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+  .tips .hd .ic { font-size: 20px; }
+  .tips .hd h2 { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 20px; margin: 0; }
+  .tips .hd .mut { font-size: 13px; color: rgba(43,33,24,.5); }
+  .tips .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .tips .item { display: flex; gap: 12px; }
+  .tips .num { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; background: #C15F3C; color: #FAEFD0; font-family: "Space Mono", monospace; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+  .tips .tx { font-size: 14.5px; line-height: 1.65; color: rgba(43,33,24,.8); }
+
+  /* picker */
+  .picker { padding: 52px 28px 20px; }
+  .picker .head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
+  .picker h2 { font-family: "Noto Serif TC", serif; font-weight: 900; font-size: clamp(28px, 4vw, 40px); margin: 0; }
+  .picker h2 .en { font-size: .5em; font-weight: 500; color: rgba(43,33,24,.5); font-family: "Space Mono", monospace; letter-spacing: .1em; }
+  .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 30px; }
+  .chip { font-family: inherit; font-size: 13.5px; font-weight: 500; padding: 8px 16px; border-radius: 999px; cursor: pointer; transition: all .14s ease; background: transparent; color: rgba(43,33,24,.7); border: 1.5px solid rgba(43,33,24,.2); }
+  .chip:hover { border-color: rgba(43,33,24,.45); }
+  .chip[aria-pressed="true"] { background: #2B2118; color: #FAEFD0; border: 1.5px solid #2B2118; }
+
+  .grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+  .card { text-align: left; background: #FFF7E4; border: 1.5px solid rgba(43,33,24,.14); border-radius: 18px; padding: 24px 24px 22px; cursor: pointer; font-family: inherit; color: inherit; display: flex; flex-direction: column; gap: 14px; transition: transform .16s, box-shadow .16s, border-color .16s; box-shadow: 0 3px 0 rgba(43,33,24,.05); width: 100%; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 0 rgba(43,33,24,.08); border-color: rgba(43,33,24,.3); }
+  .card .top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .card .lft { display: flex; align-items: center; gap: 12px; }
+  .card .letter { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 22px; width: 42px; height: 42px; border-radius: 12px; background: #2B2118; color: #FAEFD0; display: flex; align-items: center; justify-content: center; flex: none; }
+  .card .catlab { font-size: 12px; font-weight: 500; color: rgba(43,33,24,.6); background: rgba(43,33,24,.07); padding: 4px 10px; border-radius: 999px; }
+  .card .star { font-size: 18px; }
+  .card h3 { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 20px; margin: 0; line-height: 1.35; }
+  .card .desc { font-size: 14px; line-height: 1.65; color: rgba(43,33,24,.7); margin: 0; flex: 1 1 0; }
+  .card .meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding-top: 4px; border-top: 1px dashed rgba(43,33,24,.16); }
+  .card .mtime { font-family: "Space Mono", monospace; font-size: 11px; color: rgba(43,33,24,.55); }
+  .card .dotsep { color: rgba(43,33,24,.3); }
+  .card .model { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: rgba(43,33,24,.06); color: rgba(43,33,24,.65); }
+  .card .credit { font-size: 11px; padding: 2px 8px; border-radius: 999px; }
+  .card .see { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .06em; color: #B5502F; margin-top: 2px; }
+
+  /* after */
+  .after { padding: 44px 28px 20px; }
+  .after h2 { font-family: "Noto Serif TC", serif; font-weight: 900; font-size: clamp(26px, 3.6vw, 36px); margin: 0 0 6px; }
+  .after .p { font-size: 15px; color: rgba(43,33,24,.65); margin: 0 0 22px; }
+  .after .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .after .box { background: #FFF7E4; border: 1.5px solid rgba(43,33,24,.13); border-radius: 14px; padding: 18px 20px; }
+  .after .box .t { font-weight: 700; font-size: 14.5px; margin-bottom: 8px; color: #2B2118; }
+  .after .box .s { font-size: 14px; line-height: 1.6; color: rgba(43,33,24,.72); }
+
+  /* footer */
+  .foot { padding: 44px 28px 90px; }
+  .foot .box { background: #2B2118; color: #FAEFD0; border-radius: 22px; padding: 44px 40px; position: relative; overflow: hidden; }
+  .foot .eyebrow { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .22em; color: #E9A487; text-transform: uppercase; margin-bottom: 14px; }
+  .foot h2 { font-family: "Noto Serif TC", serif; font-weight: 900; font-size: clamp(28px, 4vw, 40px); margin: 0 0 16px; }
+  .foot p { font-size: 16px; line-height: 1.8; color: rgba(250,239,208,.85); max-width: 640px; margin: 0 0 8px; }
+  .foot a { color: #E9A487; text-decoration: underline; }
+  .foot .credit { font-family: "Space Mono", monospace; font-size: 12px; color: rgba(250,239,208,.5); margin: 22px 0 0; letter-spacing: .05em; }
+
+  /* modal */
+  .overlay { position: fixed; inset: 0; z-index: 100; background: rgba(43,33,24,.55); display: flex; align-items: center; justify-content: center; padding: 20px; animation: overlayIn .18s ease; }
+  .overlay[hidden] { display: none; }
+  .sheet { background: #FAEFD0; border-radius: 20px; width: min(720px, 100%); max-height: 88vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 30px 80px -20px rgba(0,0,0,.5); animation: sheetIn .22s cubic-bezier(.2,.8,.2,1); }
+  .sheet .sh-hd { display: flex; align-items: flex-start; gap: 14px; padding: 24px 26px 16px; border-bottom: 1px solid rgba(43,33,24,.14); }
+  .sheet .sh-letter { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 22px; width: 42px; height: 42px; border-radius: 12px; background: #2B2118; color: #FAEFD0; display: flex; align-items: center; justify-content: center; flex: none; }
+  .sheet .sh-meta { flex: 1 1 0; min-width: 0; }
+  .sheet .sh-cat { font-size: 12px; color: rgba(43,33,24,.6); background: rgba(43,33,24,.07); padding: 3px 10px; border-radius: 999px; display: inline-block; margin-bottom: 6px; }
+  .sheet .sh-title { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 21px; margin: 0; line-height: 1.3; }
+  .sheet .sh-close { flex: none; background: transparent; border: none; font-size: 24px; line-height: 1; color: rgba(43,33,24,.55); cursor: pointer; padding: 2px 6px; border-radius: 8px; }
+  .sheet .sh-close:hover { background: rgba(43,33,24,.08); color: #2B2118; }
+  .sheet .sh-body { padding: 18px 26px; overflow: auto; }
+  .sheet .sh-hint { font-size: 12.5px; color: rgba(43,33,24,.6); margin: 0 0 12px; }
+  .sheet pre.prompt { margin: 0; white-space: pre-wrap; word-break: break-word; font-family: "Noto Sans TC", "Space Mono", monospace; font-size: 13.5px; line-height: 1.72; background: #FFF7E4; border: 1.5px solid rgba(43,33,24,.16); border-radius: 12px; padding: 18px 20px; color: #2B2118; }
+  .sheet .sh-ft { padding: 16px 26px 24px; border-top: 1px solid rgba(43,33,24,.14); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .copybtn { flex: none; font-family: inherit; font-size: 15px; font-weight: 700; padding: 14px 26px; border-radius: 12px; cursor: pointer; border: none; background: #C15F3C; color: #FAEFD0; transition: background .18s ease; box-shadow: 0 4px 0 #8F3C21; }
+  .copybtn:hover { background: #B5502F; }
+  .copybtn.done { background: #2F6B32; box-shadow: 0 4px 0 #245026; }
+  .sh-ft .note { font-size: 12.5px; color: rgba(43,33,24,.6); }
+
+  @media (max-width: 560px){
+    .hero { padding-top: 44px; }
+    .sheet .sh-body { padding: 14px 18px; }
+    .sheet .sh-hd { padding: 18px 18px 14px; }
+    .sheet .sh-ft { padding: 14px 18px 20px; }
+    .foot .box { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="row wrap">
+    <div class="brand">
+      <div class="logo"><div class="half l"><span class="dot"></span></div><div class="half r"><span class="dot"></span></div></div>
+      <div>
+        <div class="name">CHAI Future Lab</div>
+        <div class="sub">NTU · College of Liberal Arts</div>
+      </div>
+    </div>
+    <div class="tag">人文 × 藝術 × AI</div>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <div class="kicker">A painting + A text ＞ A reading 🎫</div>
+  <h1 class="title">圖文呼應對讀祭</h1>
+  <p class="lead">繪畫史 × 小說・佛道文本</p>
+  <p class="intro">請從下面選 <strong class="hl">一張卡</strong>，整段複製、貼到 Claude Cowork 對話框、按 Enter，得到一個可以操作的圖文對讀網頁（artifact）。每張卡都把「詮釋」和「證據、查證」綁在一起——因為 AI 很會把圖與文湊得漂亮，卻不會告訴你哪裡是硬湊、哪個出處根本不存在。</p>
+</section>
+
+<section class="sec wrap">
+  <div class="tips">
+    <div class="hd">
+      <span class="ic">⚡</span>
+      <h2>省額度小撇步</h2>
+      <span class="mut">每個人額度有限，請酌量使用:&gt;</span>
+    </div>
+    <div class="grid">
+      <div class="item"><div class="num">1</div><div class="tx">貼卡片前，把模型選單切到 <strong>Sonnet</strong>：做網頁又快又好，經濟實惠。</div></div>
+      <div class="item"><div class="num">2</div><div class="tx"><strong>一人一張卡</strong>，做完想改，把要改的地方集中成<strong>一句話</strong>一次說完（每次來回都耗費額度）。</div></div>
+      <div class="item"><div class="num">3</div><div class="tx">卡片都<strong>自帶示例資料、預設不上網搜尋</strong>（搜尋最燒額度），別忘記 Magic words: Make this a live artifact.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="picker wrap">
+  <div class="head">
+    <h2>選一張卡 <span class="en">/ pick one</span></h2>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div class="grid-cards" id="cards"></div>
+</section>
+
+<section class="after wrap">
+  <h2>收成之後</h2>
+  <p class="p">做完想再動它？記得——集中一次說完。</p>
+  <div class="grid" id="afterGrid"></div>
+</section>
+
+<footer class="foot wrap">
+  <div class="box">
+    <div class="eyebrow">Take it back to your classroom</div>
+    <h2>帶回你的課堂</h2>
+    <p>恭喜泥！成功做出專屬自己的圖文對讀頁面！把示例資料換成自己的真實畫作、文本或學生作業，它就是你的研究與教學工具。<a href="https://ntu-chai.github.io/#vision" target="_blank" rel="noopener">CHAI — Co-Intelligence Humanities AI Future Lab</a></p>
+    <p class="credit">CHAI Future Lab @ NTU · 繪畫史 × 文本對讀單元 · 主講：王伯雅 Amber</p>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle">
+    <div class="sh-hd">
+      <span class="sh-letter" id="shLetter">A</span>
+      <div class="sh-meta">
+        <span class="sh-cat" id="shCat"></span>
+        <h3 class="sh-title" id="shTitle"></h3>
+      </div>
+      <button class="sh-close" id="shClose" aria-label="關閉">×</button>
+    </div>
+    <div class="sh-body">
+      <p class="sh-hint">整段複製，貼到 Claude Cowork（模型切 Sonnet）。〔　〕的地方換成你自己的資料。</p>
+      <pre class="prompt" id="shPrompt"></pre>
+    </div>
+    <div class="sh-ft">
+      <button class="copybtn" id="copyBtn">複製整段 prompt</button>
+      <span class="note">貼上後按 Enter，等它長成網頁；沒變成網頁就說「Make this a live artifact.」</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var FILTERS = ["全部","繪畫×小說","繪畫×佛道","文獻查證","通用","彩蛋"];
+
+  var DATA = [
+    { letter:"A", title:"敘事畫的決定性瞬間對讀器", category:"繪畫×小說", categoryLabel:"繪畫×小說 · 敘事時間", time:"約 3–4 分", model:"Sonnet", credit:"中", star:"⭐",
+      desc:"一段自撰的章回小說場景，看畫家會選哪個瞬間入畫、省略了什麼、如何用構圖處理時間。",
+      prompt:`（不要上網搜尋，用下面的示例文本完成；畫作一律用你既有的知識或概括描述，不要偽造具體畫作名稱與收藏，不確定處標「待查證」；不要先問我問題）
+
+我在教敘事畫如何處理小說的「時間」。請用下面這段自撰示範文本（模擬明清章回小說語感，非真實作品）做一個互動網頁（artifact）對讀器。
+
+【示範文本】
+「她扶著欄杆立在池邊，手裡的團扇半掩著臉。廊下腳步聲近了，她卻不回頭，只把扇子又抬高了些。滿池的荷花開得正盛，一朵剛謝的花瓣落在她腳邊的青石上。」
+
+網頁請做出：
+1. 「敘事時間軸」：把這段文字拆成幾個可畫的瞬間（立在池邊／腳步聲近／不回頭／花瓣落下），讓我點選「如果你是畫家，你會選哪一個瞬間入畫」。
+2. 每個瞬間點開，顯示：畫這一刻能表現什麼、會犧牲什麼（前因後果如何暗示）、構圖上要怎麼安排人物與視線。
+3. 一張「畫面 vs 文本」對照卡：畫面能直接呈現的（姿態、器物、季節），與只能靠文字交代的（心理、聲音、時間流動），各一欄。
+4. 「反面提醒」面板：這段文字若配上一幅畫，最容易被過度解讀成什麼（例如把落花一定讀成命運隱喻）。
+5. 底部「換上我的資料」：我要換上哪一段文本、哪一類畫作，以及要再跟你說哪一句話。
+
+繁體中文，示範文本明確標示為自撰、非真實作品。` },
+
+    { letter:"B", title:"園林仕女 圖文母題對讀器", category:"繪畫×小說", categoryLabel:"繪畫×小說 · 母題意象", time:"約 2–3 分", model:"Sonnet", credit:"低", star:"",
+      desc:"小說閨閣場景描寫 × 人物風俗畫的母題對應：標對應論點、強度，還有「只是慣例」的反面可能。",
+      prompt:`（不要上網搜尋，用你既有的知識完成；具體畫作與出處不確定一律標「待查證」，不要偽造逐字引文；不要先問我問題）
+
+我在做小說場景描寫與人物風俗畫的「母題」對讀。請以「園林中的仕女」這一常見母題為例，做一個互動網頁（artifact）對讀器。
+
+請從你既有的知識中，整理這個母題在兩邊的常見元素：
+· 圖像側：風俗畫／仕女畫常見的母題（欄杆、太湖石、芭蕉、團扇、屏風、庭院深度的處理）
+· 文本側：明清小說描寫閨閣場景時反覆出現的意象與其功能
+
+網頁需要：
+1. 中間一條「共通母題」帶（如：欄杆、扇、石、花、屏），點一個母題，左右兩側同時亮起它在圖像與文本裡各自怎麼用。
+2. 每組對應標三件事：對應論點（為什麼可以對起來）、對應強度（強／中／弱）、反面可能（也可能只是題材慣例、不必然互文）。
+3. 一張「這是慣例還是呼應？」判斷卡：提醒哪些相似只是同時代的共同語彙，不足以證明特定的圖文關係。
+4. 底部固定說明：本頁為 AI 依既有知識重構、非逐字引文，使用前須查證；並說明我要換上真實畫作與文本時要提供什麼（作者、年代、版本、出處）。
+
+繁體中文，書名與畫名附必要資訊。` },
+
+    { letter:"C", title:"山水留白 × 虛靜對讀器", category:"繪畫×佛道", categoryLabel:"繪畫×佛道 · 山水思想", time:"約 3–4 分", model:"Sonnet", credit:"中", star:"⭐",
+      desc:"山水畫的留白、三遠、以少勝多，對上老莊的虛靜與有無。三欄嚴格分開「畫面／文本／詮釋」。",
+      prompt:`（不要上網搜尋，用你既有的知識完成；畫作以概括描述為主，不確定的名稱、年代、歸屬一律標「待查證」；不要先問我問題）
+
+我在對讀山水畫的空間處理與道家思想。請做一個互動網頁（artifact）對讀器，主題是「留白 × 虛靜」。
+
+請從你既有的知識中選出 4 組對應，把山水畫的具體畫面手法對上道家概念：
+· 圖像側：留白、雲煙、可行可望可遊可居、三遠（高遠／深遠／平遠）、以少勝多
+· 文本側：老子「大象無形」「有無相生」、莊子「虛室生白」「坐忘」等概念（用你自己的話說明，不要偽造逐字引文）
+
+每一組請明確分成三欄：
+1. 畫面上看得到的（客觀事實）
+2. 文本說了什麼（概念摘述，標明大致出自《老子》或《莊子》哪一層意思）
+3. 這是詮釋（把兩者連起來的推論，並標對應強度：強／中／弱）
+
+網頁另需：
+1. 一個「時代錯置警示」面板：逐條檢查——這個概念的年代和這類畫風相容嗎？有沒有拿後代畫論回頭套早期作品的風險？
+2. 一張「過度詮釋量表」：把每組對應標在「畫面證據充分 ↔ 純屬聯想」的軸上。
+3. 底部「換上我的資料」說明與「本頁須查證」聲明。
+
+繁體中文。` },
+
+    { letter:"D", title:"減筆禪境對讀器", category:"繪畫×佛道", categoryLabel:"繪畫×佛道 · 禪畫", time:"約 2–3 分", model:"Sonnet", credit:"低", star:"",
+      desc:"簡筆、墨戲、逸筆草草 × 禪宗概念，附「別把簡逸一律讀成禪意」的過度詮釋雷區。",
+      prompt:`（不要上網搜尋，用你既有的知識完成，不確定處標「待查證」，不要偽造逐字引文；不要先問我問題）
+
+我要對讀「減筆／墨戲」一類簡逸畫風與禪宗文本。請做一個互動網頁（artifact）對讀器。
+
+請用你既有的知識，整理 3–4 組對應：
+· 圖像側：簡筆人物、大片留白、逸筆草草、不求形似的畫面特徵（用概括描述，避免指名特定真跡的細節）
+· 文本側：禪宗常見概念——不立文字、直指人心、當下、平常心（用你自己的話說明其大意）
+
+每組對應請寫出：對應論點、對應強度（強／中／弱）、以及「反例／但書」（這種畫風也可能只是文人趣味或時代風尚，不必然等於禪）。
+
+網頁需要：
+1. 左右對讀版面，中間「關鍵詞」帶（簡、空、拙、當下），點詞兩側相關內容同時亮起。
+2. 一個「過度詮釋雷區」面板：列出把簡逸畫風一律讀成「禪意」最常見的三種誤區，各配一句提醒。
+3. 一張「我需要什麼證據才能這樣說」清單：題跋、畫家生平與宗教背景、同時代評論等，逐條列出。
+4. 底部「本頁為 AI 重構、須查證」聲明與「換上我的資料」說明。
+
+繁體中文。` },
+
+    { letter:"E", title:"題跋與引文查證台", category:"文獻查證", categoryLabel:"文獻查證 · 題跋款識", time:"約 3–4 分", model:"Sonnet", credit:"中", star:"⭐",
+      desc:"給一則虛構的仿題跋與引文，帶學生一步步查證畫作、款識、引文是否可信，附可信度分級。",
+      prompt:`（不要上網搜尋，用下面的示例資料完成；不要偽造真實畫作或真實題跋，示例一律當作虛構練習；不要先問我問題）
+
+我要教學生查證「一則題跋和它引用的文句是否可信」。請用下面這組自撰的示範資料（全部為虛構練習用，非真實文物）做一個互動網頁（artifact）查證工作台。
+
+【示範：一幅畫的基本資料（虛構）】
+名稱《溪山煙靄圖》・款「甲子夏日寫於聽雨軒」・傳為某某所作。
+【示範：畫上題跋（虛構）】
+「昔人論畫謂『山靜似太古』，此卷得之。觀者當於無筆墨處求之。」
+
+網頁請做出：
+1. 「查證關卡」逐步流程：畫作是否存在與著錄？款識干支與傳稱作者的年代是否相容？題跋所引「山靜似太古」出自何處、是否被斷章取義？每一關給「要查什麼、去哪類資料查、查到什麼算過關」。
+2. 一張「可信度分級」表：把每一項證據標為 確定／存疑／待查證／查無，並要求對「查無」誠實標示、不得略過。
+3. 「危險訊號」清單：哪些跡象顯示一則題跋或引文可能是後人偽託或 AI 杜撰（年代矛盾、出處過於順口、查無原文等）。
+4. 底部說明：本頁示例全為虛構練習；我要換上真實案例時該提供什麼（高解析圖、著錄出處、釋文來源）。
+
+繁體中文。` },
+
+    { letter:"F", title:"AI 出處打假器", category:"文獻查證", categoryLabel:"文獻查證 · 出處驗證", time:"約 2–3 分", model:"Sonnet", credit:"低", star:"",
+      desc:"貼上一段 AI 生成的圖文詮釋，逐句標「畫面證據／文本證據／查無依據」，並給驗證出處的步驟。",
+      prompt:`（不要上網搜尋，用下面貼上的示例詮釋完成；不要為它補上任何新的出處或引文；不要先問我問題）
+
+我要訓練學生檢查「AI 生成的圖文呼應詮釋」有沒有硬湊與造假。請用下面這段示範詮釋（一段刻意混入問題的 AI 風格文字）做一個互動網頁（artifact）打假器。
+
+【示範詮釋（含刻意埋入的錯誤，請不要幫我更正，這正是要讓學生抓的）】
+「這幅山水的空亭，正呼應了王維〈山中〉『空山不見人』的孤寂；畫家在題跋中自述『每作畫必先焚香靜坐三日』，可見其禪心。此作現藏於某博物館，為其晚年代表。」
+
+網頁請做出：
+1. 「逐句拆解」檢視器：把這段詮釋切成幾個主張，每個主張標三種顏色——畫面證據（可從畫面看到）、文本證據（可從指明的文本查到）、查無依據（作者自述、藏地、年代等需外部佐證卻沒有來源的）。
+2. 每個「查無依據」的主張，附一個「怎麼驗證真偽」的步驟框（例如：這句引文的出處與歸屬怎麼核對、這個藏地怎麼確認、這句題跋去哪查）。
+3. 一張「常見造假型態」對照卡：張冠李戴、把聯想寫成事實、順口引文、虛構藏地與年代。
+4. 底部「換上我的資料」：貼上另一段 AI 詮釋要怎麼跟你說。
+
+繁體中文，引用的作品原文保留原文。` },
+
+    { letter:"G", title:"小說插圖跨版本對讀器", category:"繪畫×小說", categoryLabel:"繪畫×小說 · 版畫插圖", time:"約 2–3 分", model:"Sonnet", credit:"低", star:"",
+      desc:"同一個小說情節在不同時代版畫插圖裡怎麼被畫：構圖繁簡、忠實度、書坊風格的差異。",
+      prompt:`（不要上網搜尋，用你既有的知識完成；具體版本、年代、藏地不確定一律標「待查證」，不要偽造書目細節；不要先問我問題）
+
+我要比較「同一個小說情節，在不同時代的版畫插圖裡怎麼被畫」。請以一個常見的章回小說情節類型（例如「園中初逢」或「月下相會」這類場景，用通稱即可，不必指定特定真本）做一個互動網頁（artifact）跨版本對讀器。
+
+請用你既有的知識，概括說明這類插圖在不同時期常見的處理差異：構圖繁簡、人物比例、背景細節、對文字的忠實程度、書坊風格的影響。
+
+網頁需要：
+1. 2–3 個「版本欄」並排（以 A／B／C 代稱，不假造真實書名），每欄列出這一路插圖的常見特徵。
+2. 一條「同一情節、不同選擇」對照帶：同一段文字，各版本選了畫哪個瞬間、加了或省了什麼。
+3. 一張「這是風格差異還是詮釋差異」判斷卡。
+4. 底部固定說明：本頁為 AI 依既有知識概括、非特定真本；換上真實圖版時要提供什麼（書名、卷冊、年代、藏地、圖檔）。
+
+繁體中文。` },
+
+    { letter:"H", title:"圖文對讀四欄工作表", category:"通用", categoryLabel:"通用 · 對讀鷹架", time:"約 2–3 分", model:"Sonnet", credit:"低", star:"",
+      desc:"把〔畫作〕〔文本〕換成你自己的，生成一張「圖像證據／文本證據／對應論點／反面可能」工作表。",
+      prompt:`（不要上網搜尋，用下面我給的框架完成，不要偽造出處，不要先問我問題）
+
+請幫我做一個可重複使用的圖文對讀工作表網頁（artifact）。它不預設特定作品，而是給我一個好用的鷹架。
+
+〔畫作或圖像〕：〔例：一幅山水立軸〕
+〔文本〕：〔例：一段散文或一首詩〕
+
+網頁請做出：
+1. 一張四欄工作表，每一條「呼應」都要填：圖像側證據（畫面哪裡）、文本側證據（哪一句）、對應論點（為什麼能對起來）、反面可能（也可以怎麼解釋）。
+2. 每條可標對應強度（強／中／弱）與可信度（確定／待查證）。
+3. 上方一個「畫面事實 vs 詮釋」分隔提醒：填寫前先把「看得到的」和「想出來的」分開。
+4. 底部一鍵匯出：把整張表整理成一段條列文字，方便貼進報告；並提醒我改用真實作品時要補上出處與版本。
+
+繁體中文，版面米黃底（#FAEFD0）。` },
+
+    { letter:"I", title:"一頁對讀名片", category:"通用", categoryLabel:"通用 · 最省額度", time:"約 1–2 分", model:"Haiku／Sonnet", credit:"最低", star:"",
+      desc:"填三個空格就好，做出一張圖文呼應小卡，可直接投影自我介紹或當課堂引子。",
+      prompt:`（不要上網搜尋，直接完成，不要先問我問題）
+
+幫我做一頁「圖文對讀小卡」網頁（artifact）。作品或母題：〔　〕；一句我的對讀主張：〔　〕；我最想查證的一件事：〔　〕。
+
+版面：米黃底（#FAEFD0）、大字標題、三張可翻轉卡片（正面關鍵詞、背面一句話說明）、底部一行「本卡內容待查證」提醒。繁體中文，學術但溫暖。` },
+
+    { letter:"J", title:"圖文對讀翻牌回顧", category:"彩蛋", categoryLabel:"彩蛋 (?)", time:"約 1–2 分", model:"Haiku／Sonnet", credit:"最低", star:"🥚",
+      desc:"把今天圖文對讀的關鍵概念做成翻牌小遊戲，回家考自己（或考同事）。",
+      prompt:`（不要上網搜尋，直接完成，不要先問我問題）
+
+把今天圖文對讀的核心概念做成翻牌記憶卡遊戲網頁（artifact）。概念：母題呼應、決定性瞬間、留白與虛靜、時代錯置、過度詮釋、雙重證據（圖像＋文本）、對應強度、題跋互文、可信度分級、AI 出處查證。
+
+玩法：正面顯示名詞、點擊翻面顯示一句白話解釋；全部翻完出現「你已出師 🎓」動畫。米黃底、繁體中文、輕鬆幽默。` }
+  ];
+
+  var AFTER = [
+    { t:"改樣式＋加功能", s:"「三件事一次改：配色換◯◯、加篩選按鈕、標題改成◯◯」" },
+    { t:"沒變成網頁 / 只給我文字", s:"「Make this a live artifact.」" },
+    { t:"畫面空白或跑版", s:"「artifact 沒有正確顯示，請檢查並修正」" },
+    { t:"換上我的真實資料", s:"「把示例資料換成我貼上的這一份，架構與版面都不要動」" },
+    { t:"留住它", s:"artifact 會留在側欄；也可請它「另存成 HTML 檔到我的資料夾」" },
+    { t:"變漂亮拿去簡報／投稿", s:"用 Claude Design（claude.ai/design）：貼上內容，一句話變簡報" }
+  ];
+
+  var $ = function(id){ return document.getElementById(id); };
+  function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+  function creditStyle(c){
+    if (c === "中") return "background:#F3D6A0;color:#7A5510;";
+    return "background:#CDE7C6;color:#2F6B32;";
+  }
+
+  var state = { filter: "全部", selected: null, copied: false };
+  var copyTimer = null;
+
+  /* filters */
+  function renderChips(){
+    $("chips").innerHTML = FILTERS.map(function(f){
+      return '<button class="chip" data-f="'+esc(f)+'" aria-pressed="'+(f===state.filter)+'">'+esc(f)+'</button>';
+    }).join("");
+    Array.prototype.forEach.call($("chips").querySelectorAll(".chip"), function(b){
+      b.addEventListener("click", function(){ state.filter = b.dataset.f; renderChips(); renderCards(); });
+    });
+  }
+
+  /* cards */
+  function renderCards(){
+    var list = DATA.filter(function(c){ return state.filter === "全部" || c.category === state.filter; });
+    $("cards").innerHTML = list.map(function(c){
+      return '<button class="card" data-letter="'+esc(c.letter)+'">'
+        + '<div class="top"><div class="lft">'
+        + '<span class="letter">'+esc(c.letter)+'</span>'
+        + '<span class="catlab">'+esc(c.categoryLabel)+'</span>'
+        + '</div>'+(c.star?'<span class="star">'+esc(c.star)+'</span>':'<span></span>')+'</div>'
+        + '<h3>'+esc(c.title)+'</h3>'
+        + '<p class="desc">'+esc(c.desc)+'</p>'
+        + '<div class="meta">'
+        + '<span class="mtime">'+esc(c.time)+'</span>'
+        + '<span class="dotsep">·</span>'
+        + '<span class="model">'+esc(c.model)+'</span>'
+        + '<span class="credit" style="'+creditStyle(c.credit)+'">額度 '+esc(c.credit)+'</span>'
+        + '</div>'
+        + '<div class="see">看 prompt →</div>'
+        + '</button>';
+    }).join("");
+    Array.prototype.forEach.call($("cards").querySelectorAll(".card"), function(b){
+      b.addEventListener("click", function(){ openSheet(b.dataset.letter); });
+    });
+  }
+
+  /* after grid */
+  function renderAfter(){
+    $("afterGrid").innerHTML = AFTER.map(function(a){
+      return '<div class="box"><div class="t">'+esc(a.t)+'</div><div class="s">'+esc(a.s)+'</div></div>';
+    }).join("");
+  }
+
+  /* modal */
+  function openSheet(letter){
+    var c = DATA.filter(function(x){ return x.letter === letter; })[0];
+    if(!c) return;
+    state.selected = letter; state.copied = false;
+    $("shLetter").textContent = c.letter;
+    $("shCat").textContent = c.categoryLabel;
+    $("shTitle").textContent = c.title;
+    $("shPrompt").textContent = c.prompt;
+    var btn = $("copyBtn"); btn.textContent = "複製整段 prompt"; btn.classList.remove("done");
+    $("overlay").hidden = false;
+    document.body.style.overflow = "hidden";
+    btn.focus();
+  }
+  function closeSheet(){
+    $("overlay").hidden = true;
+    state.selected = null;
+    document.body.style.overflow = "";
+  }
+  function doCopy(){
+    var c = DATA.filter(function(x){ return x.letter === state.selected; })[0];
+    if(!c) return;
+    var done = function(){
+      var btn = $("copyBtn");
+      btn.textContent = "已複製 ✓ 快去貼上"; btn.classList.add("done");
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(function(){ btn.textContent = "複製整段 prompt"; btn.classList.remove("done"); }, 1900);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(c.prompt).then(done, function(){ fallbackCopy(c.prompt, done); });
+    } else { fallbackCopy(c.prompt, done); }
+  }
+  function fallbackCopy(text, done){
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch(e){}
+    document.body.removeChild(ta);
+  }
+
+  $("copyBtn").addEventListener("click", doCopy);
+  $("shClose").addEventListener("click", closeSheet);
+  $("overlay").addEventListener("click", function(e){ if(e.target === $("overlay")) closeSheet(); });
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape" && !$("overlay").hidden) closeSheet(); });
+
+  renderChips();
+  renderCards();
+  renderAfter();
+})();
+</script>
+</body>
+</html>
